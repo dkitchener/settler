@@ -10,14 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_010252) do
+ActiveRecord::Schema.define(version: 2020_12_05_153329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
+    t.decimal "victory_score", precision: 15, scale: 13
     t.bigint "winner_id"
+    t.bigint "series_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["series_id"], name: "index_games_on_series_id"
     t.index ["winner_id"], name: "index_games_on_winner_id"
+  end
+
+  create_table "player_series_season_counters", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "series_id"
+    t.bigint "season_id"
+    t.integer "point_total", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_player_series_season_counters_on_player_id"
+    t.index ["season_id"], name: "index_player_series_season_counters_on_season_id"
+    t.index ["series_id"], name: "index_player_series_season_counters_on_series_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -28,18 +45,19 @@ ActiveRecord::Schema.define(version: 2020_12_05_010252) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.bigint "games_id"
-    t.bigint "players_id"
+    t.bigint "game_id"
+    t.bigint "player_id"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["games_id"], name: "index_scores_on_games_id"
-    t.index ["players_id"], name: "index_scores_on_players_id"
+    t.index ["game_id"], name: "index_scores_on_game_id"
+    t.index ["player_id"], name: "index_scores_on_player_id"
   end
 
   create_table "seasons", force: :cascade do |t|
     t.bigint "winner_id"
     t.boolean "current", default: false, null: false
+    t.integer "max_total_points", default: 200
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["winner_id"], name: "index_seasons_on_winner_id"
@@ -52,13 +70,13 @@ ActiveRecord::Schema.define(version: 2020_12_05_010252) do
     t.boolean "current", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "seasons_id", null: false
-    t.index ["seasons_id"], name: "index_series_on_seasons_id"
+    t.bigint "season_id", null: false
+    t.index ["season_id"], name: "index_series_on_season_id"
     t.index ["winner_id"], name: "index_series_on_winner_id"
   end
 
   add_foreign_key "games", "players", column: "winner_id"
   add_foreign_key "seasons", "players", column: "winner_id"
   add_foreign_key "series", "players", column: "winner_id"
-  add_foreign_key "series", "seasons", column: "seasons_id"
+  add_foreign_key "series", "seasons"
 end
