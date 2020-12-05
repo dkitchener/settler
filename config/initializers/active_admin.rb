@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Settler"
+  config.site_title = "Settlers Of Catan Ohio Style"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  # config.site_title_image = "logo.png"
+  #config.site_title_image = "logo.png"
 
   # == Default Namespace
   #
@@ -30,7 +30,7 @@ ActiveAdmin.setup do |config|
   # will namespace routes to /hello_world/*
   #
   # To set no namespace by default, use:
-  #   config.default_namespace = false
+  #  config.default_namespace = false
   #
   # Default:
   # config.default_namespace = :admin
@@ -192,7 +192,7 @@ ActiveAdmin.setup do |config|
   # Breadcrumbs are enabled by default. You can customize them for individual
   # resources or you can disable them globally from here.
   #
-  # config.breadcrumb = false
+  config.breadcrumb = false
 
   # == Create Another Checkbox
   #

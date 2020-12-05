@@ -1,11 +1,23 @@
 ActiveAdmin.register Player do
   actions :all, :except => [:destroy, :edit]
 
-  index pagination_total: false do  
+  index pagination_total: false do
     column :name
     column :color_code
+
+    column "Series Won" do |player|
+      Series.where(winner_id: player.id).count
+    end
+
+    column "Seasons Won" do |player|
+      Season.where(winner_id: player.id).count
+    end
+
     column :ppg
-    column :win_percentage
+
+    column "Career Win Percentage" do |player|
+      number_to_percentage(player.win_percentage, precision: 1)
+    end
 
     actions
   end

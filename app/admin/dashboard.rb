@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { "Current Series" }
 
-  content title: proc { "Series Play" } do
+  content title: proc { "Series Play! Season #{Season.find_by(current:true)&.id}" } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
         span "Settlers Coming Soon"

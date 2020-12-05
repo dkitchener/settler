@@ -19,6 +19,6 @@ class Player < ApplicationRecord
 
     return 0.0 if total_games == 0.0
 
-    (total_games_won/total_games).round(3)
+    (total_games_won/total_games).round(3)*100
   end
 end
