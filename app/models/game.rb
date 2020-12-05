@@ -4,8 +4,8 @@ class Game < ApplicationRecord
 
   before_create :calculate_victory_score
   before_create :update_winner
-  after_create :update_player_series_counter
-  after_create :update_series
+  after_create :update_player_series_counter, if: :series_play?
+  after_create :update_series, if: :series_play?
 
   accepts_nested_attributes_for :scores
 
@@ -32,5 +32,9 @@ class Game < ApplicationRecord
      update_player_series_counter(20)
      series.end!(winner_id)
     end
+  end
+
+  def series_play?
+    self.series.present?
   end
 end
