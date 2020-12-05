@@ -2,31 +2,45 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { "Current Series" }
 
   content title: proc { "Series Play! Season #{Season.find_by(current:true)&.id}" } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span "Settlers Coming Soon"
-        small "Needs ideas."
+
+
+    #Here is an example of a simple dashboard with columns and panels.
+
+    columns do
+      column do
+        panel "Current Series Data" do
+          div class: "blank_slate_container", id: "dashboard_default_message" do
+            span class: "blank_slate" do
+              span "Coming Soon"
+              small "Needs implementing."
+            end
+          end
+       end
+     end
+
+      column do
+        panel "Series Play Rules" do
+          div class: "blank_slate_container", id: "dashboard_default_message" do
+            span class: "blank_slate" do
+              span "Coming Soon"
+              small "Needs implementing."
+            end
+          end
+        end
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+    columns do
+      column do
+        panel "Road to 200 Panel" do
+          div class: "blank_slate_container", id: "dashboard_default_message" do
+            span class: "blank_slate" do
+              span "Coming Soon"
+              small "Needs implementing."
+            end
+          end
+       end
+     end
+    end
+  end
 end
