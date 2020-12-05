@@ -24,3 +24,62 @@ game = Game.create!(
     Score.new({ score: 6, player:  player4 }),
   ]
 )
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
+
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
+
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
+
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
+
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
+
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 5, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
