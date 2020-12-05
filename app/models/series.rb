@@ -2,19 +2,21 @@ class Series < ApplicationRecord
   has_many :games
   belongs_to :season
 
-  def end!(winner:)
-    series.winner = winner
-    series.current = false
-    create_new_season if series.season.over?
-    create_new_series
+  def end!(winner_id)
+    self.winner_id = winner_id
+    self.current = false
+
+    self.season.over? ? start_new_season : create_new_series
   end
 
-  def create_next_series
-    current_season = Season.where(current: true)
-    Series.new
+  def create_new_series(number=nil)
+    current_season = Season.find_by(current: true)
+    Series.create(season: current_season, number: number || self.number+1, current:true)
   end
 
-  def create_new_season
-    Season.create!
+  def start_new_season
+    season.update(current: false)
+    Season.create!(current:true)
+    create_new_series(number=1)
   end
 end

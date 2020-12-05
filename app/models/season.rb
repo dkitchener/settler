@@ -2,6 +2,6 @@ class Season < ApplicationRecord
   has_many :series
 
   def over?
-    PlayeSeriesSeasonCounter.where("series_id = #{series.id} and season_id = season.id and pt_total >= 200").present?
+    PlayerSeriesSeasonCounter.where("season_id = #{self.id} and point_total >= 70").present?
   end
 end

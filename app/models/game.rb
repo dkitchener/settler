@@ -27,9 +27,10 @@ class Game < ApplicationRecord
  end
 
   def update_series
-    if series.games.count == series.max_total_games
+    win_total = Game.where(series: series, winner_id: winner_id).count
+    if win_total == series.num_games
      update_player_series_counter(20)
-     series.end!
+     series.end!(winner_id)
     end
   end
 end

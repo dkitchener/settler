@@ -14,13 +14,13 @@ player5 = Player.find_or_create_by(name:'Jake',   color_code: '808080')
 season = Season.find_or_create_by(id: 1)
 series = Series.find_or_create_by(season: season)
 
-# for testing purposes only.
-# game = Game.create!(
-#   series: series,
-#   scores: [
-#     Score.new({ score: 10, player: player1 }),
-#     Score.new({ score: 9, player:  player2 }),
-#     Score.new({ score: 11, player: player3 }),
-#     Score.new({ score: 6, player:  player4 }),
-#   ]
-# )
+#for testing purposes only.
+game = Game.create!(
+  series: series,
+  scores: [
+    Score.new({ score: 10, player: player1 }),
+    Score.new({ score: 9, player:  player2 }),
+    Score.new({ score: 11, player: player3 }),
+    Score.new({ score: 6, player:  player4 }),
+  ]
+)
