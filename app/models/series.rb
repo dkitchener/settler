@@ -16,7 +16,7 @@ class Series < ApplicationRecord
   end
 
   def start_new_season
-    season.update!(current: false)
+    season.update!(current: false, winner_id: self.winner_id)
     Season.create!(current: true, id: season.id + 1)
     create_new_series(number=1)
   end
