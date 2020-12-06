@@ -42,56 +42,24 @@
                 <thead>
                     <tr class="text-center text-uppercase">
                       <th scope="col" >Date Played</th>
-                      <th scope="col" class='bg-danger'>Dave</th>
-                      <th scope="col" class="bg-info">Elliot</th>
-                      <th scope="col" class="bg-secondary">Jake</th>
-                      <th scope="col" class="bg-primary">Josh</th>
-                      <th scope="col" class="bg-success">Andy</th>
+                      <% @ordered_players.each do |player| %>
+                        <th scope="col" style="background-color:#<%=player.color_code%>;"><%=player.name%></th>
+                      <% end %>
                       <th scope="col" >Winner</th>
                       <th scope="col" >Victor Scale</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="text-center  text-uppercase">
-                      <td>12/20/2020</td>
-                      <td>11</td>
-                      <td>7</td>
-                      <td>9</td>
-                      <td>10</td>
-                      <td>5</td>
-                      <td class='bg-danger'>Dave</td>
-                      <td class='text-danger'><strong>5.4</strong></td>
-                    </tr>
-                    <tr class="text-center  text-uppercase">
-                      <td>12/20/2020</td>
-                      <td>6</td>
-                      <td>7</td>
-                      <td>9</td>
-                      <td>11</td>
-                      <td>5</td>
-                      <td class='bg-primary'>Josh</td>
-                      <td class='text-primary'><strong>5.4</strong></td>
-                    </tr>
-                    <tr class="text-center  text-uppercase">
-                      <td>12/20/2020</td>
-                      <td>6</td>
-                      <td>7</td>
-                      <td>9</td>
-                      <td>11</td>
-                      <td>5</td>
-                      <td class='bg-primary'>Josh</td>
-                      <td class='text-primary'><strong>5.4</strong></td>
-                    </tr>
-                    <tr class="text-center  text-uppercase">
-                      <td>12/20/2020</td>
-                      <td>11</td>
-                      <td>7</td>
-                      <td>9</td>
-                      <td>6</td>
-                      <td>5</td>
-                      <td class='bg-danger'>Dave</td>
-                      <td class='text-danger'><strong>5.4</strong></td>
-                    </tr>
+                    <% @current_series.games.each do |game| %>
+                      <tr class="text-center  text-uppercase">
+                        <td><%= game.created_at.to_date %></td>
+                        <% @ordered_players.each do |player| %>
+                          <td><%= @ordered_scores.find_by(player: player)&.score %></td>
+                        <% end %>
+                        <td style="background-color:#<%=Player.find(game.winner_id).color_code%>;"><%= Player.find(game.winner_id).name %></td>
+                        <td class='text-danger'><strong><%= game.victory_score %></strong></td>
+                      </tr>
+                    <% end %>
                   </tbody>
             </table>
             <br/>
@@ -100,19 +68,15 @@
                   <tbody>
                     <tr class="text-center  text-uppercase">
                       <td>Series Leader</td>
-                      <td class='bg-danger'>Dave</td>
+                      <td style='background-color:#<%= PlayerSeriesSeasonCounter.where(series: @current_series).max { |a,b| a.point_total <=> b.point_total }.player.color_code %>'><%= PlayerSeriesSeasonCounter.where(series: @current_series).max { |a,b| a.point_total <=> b.point_total }.player.name  %></td>
                     </tr>
                     <tr class="text-center  text-uppercase">
                       <td>Games Played</td>
-                      <td>4</td>
-                    </tr>
-                    <tr class="text-center  text-uppercase">
-                      <td>Series Best Gamerscore</td>
-                      <td class='bg-primary'>Josh</td>
+                      <td><%= @current_series.games.count %></td>
                     </tr>
                     <tr class="text-center  text-uppercase">
                       <td>Series High Victor Scale</td>
-                      <td>5.4</td>
+                      <td><%= @current_series.games.pluck(:victory_score).max %></td>
                     </tr>
                   </tbody>
             </table>
@@ -151,12 +115,11 @@
           </h3>
           <table class="table table-hover table-bordered table-dark">
               <thead>
+
                   <tr class="text-center">
-                    <th scope="col" class='bg-danger text-uppercase '>Dave</th>
-                    <th scope="col" class="bg-info text-uppercase">Elliot</th>
-                    <th scope="col" class="bg-secondary text-uppercase">Jake</th>
-                    <th scope="col" class="bg-primary text-uppercase">Josh</th>
-                    <th scope="col" class="bg-success text-uppercase">Andy</th>
+                    <% @ordered_players.each do |player| %>
+                      <th scope="col" style="background-color:#<%=player.color_code%>;"><%=player.name%></th>
+                    <% end %>
                   </tr>
                 </thead>
                 <tbody>
@@ -182,20 +145,16 @@
           <table class="table table-hover table-bordered table-dark">
               <thead>
                   <tr class="text-center">
-                    <th scope="col" class='bg-danger text-uppercase '>Dave</th>
-                    <th scope="col" class="bg-info text-uppercase">Elliot</th>
-                    <th scope="col" class="bg-secondary text-uppercase">Jake</th>
-                    <th scope="col" class="bg-primary text-uppercase">Josh</th>
-                    <th scope="col" class="bg-success text-uppercase">Andy</th>
+                    <% @ordered_players.each do |player| %>
+                      <th scope="col" style="background-color:#<%=player.color_code%>;"><%=player.name%></th>
+                    <% end %>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="text-center">
-                    <td>1</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td>1</td>
+                    <% @ordered_players.each do |player| %>
+                      <td><%=Series.where(winner_id: player.id).count%></td>
+                    <% end %>
                   </tr>
                 </tbody>
           </table>
