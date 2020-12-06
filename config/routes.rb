@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
   resources :games, only: [:index, :new, :create]
   get 'dashboard', to: 'dashboard#index'
+  get 'stats', to: 'stats#show'
 end
