@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    return {}
+    @current_series = Series.find_by(current: true)    
   end
 end

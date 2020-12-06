@@ -1,1 +1,179 @@
-<h1>Coming Soon</h1>
+<div class="container">
+  <header class="blog-header py-3">
+
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <!-- <div class="col-4 pt-1">
+      </div>
+      <div class="col-4 text-center">
+        <h1 class="display-5 font-italic">Catan Series Play!</h1>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+      </div> -->
+    </div>
+<%= image_tag  "catan-bg.png", size:"1110x200" %>
+  </header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 text-muted " href="#">Current Series</a>
+      <a class="p-2 text-muted " href="/admin/series">Past Series</a>
+      <a class="p-2 text-muted " href="/admin/seasons">Past Seasons</a>
+      <a class="p-2 text-muted " href="/admin/games">Past Games</a>
+      <a class="p-2 text-muted" href="/admin">Admin</a>
+    </nav>
+  </div>
+
+
+  <div class="jumbotron p-3 p-md-5 text-white rounded bg-danger">
+    <div class="col-md-10 px-0">
+      <h1 class="display-3 font-italic text-warning">Catan Series Play!</h1>
+      <h1 class="display-4">Season <%= @current_series.season.id %>, Series <%= @current_series.number %></h1>
+      <p class="lead my-3">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+          <div class="card-body d-flex flex-column align-items-start">
+            <h3 class="mb-0">
+              <!-- <p class="text-dark">Career Gamer Score</p> -->
+            </h3>
+            <table class="table table-hover table-bordered table-dark">
+                <thead>
+                    <tr class="text-center text-uppercase">
+                      <th scope="col" >Date Played</th>
+                      <th scope="col" class='bg-danger'>Dave</th>
+                      <th scope="col" class="bg-info">Elliot</th>
+                      <th scope="col" class="bg-secondary">Jake</th>
+                      <th scope="col" class="bg-primary">Josh</th>
+                      <th scope="col" class="bg-success">Andy</th>
+                      <th scope="col" >Winner</th>
+                      <th scope="col" >Victor Scale</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="text-center  text-uppercase">
+                      <td>12/20/2020</td>
+                      <td>11</td>
+                      <td>7</td>
+                      <td>9</td>
+                      <td>10</td>
+                      <td>5</td>
+                      <td class='bg-danger'>Dave</td>
+                      <td class='text-danger'><strong>5.4</strong></td>
+                    </tr>
+                    <tr class="text-center  text-uppercase">
+                      <td>12/20/2020</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>9</td>
+                      <td>11</td>
+                      <td>5</td>
+                      <td class='bg-primary'>Josh</td>
+                      <td class='text-primary'><strong>5.4</strong></td>
+                    </tr>
+                    <tr class="text-center  text-uppercase">
+                      <td>12/20/2020</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>9</td>
+                      <td>11</td>
+                      <td>5</td>
+                      <td class='bg-primary'>Josh</td>
+                      <td class='text-primary'><strong>5.4</strong></td>
+                    </tr>
+                    <tr class="text-center  text-uppercase">
+                      <td>12/20/2020</td>
+                      <td>11</td>
+                      <td>7</td>
+                      <td>9</td>
+                      <td>6</td>
+                      <td>5</td>
+                      <td class='bg-danger'>Dave</td>
+                      <td class='text-danger'><strong>5.4</strong></td>
+                    </tr>
+                  </tbody>
+            </table>
+          </div>
+        </div>
+      </p>
+      <p class="lead mb-0"><button type="button" class="p-2 btn btn-warning">+ New Game</button></p>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <h3 class="mb-0">
+            <p class="text-dark">Series Rules</p>
+          </h3>
+          <ul class="list-group ">
+            <div class="mb-1 text-muted">
+            <li class="list-group-item text-white bg-danger">A full season is first to <strong>200 Series Play points</strong>.</li>
+            <li class="list-group-item list-group-item-warning">Each series in a season is the first player to <strong>5 wins</strong></li>
+            <li class="list-group-item text-white bg-danger"><strong>1 win</strong> in series play is worth <strong>10 points</strong> to your series play point total</li>
+            <li class="list-group-item list-group-item-warning">Winning the series is worth an extra <strong>20 points</strong>
+  </li>
+            <li class="list-group-item text-white bg-danger ">A season would be first player to <strong>20 wins</strong> (or 15 if a player won 3 series)</li>
+            <li class="list-group-item  list-group-item-warning">All wins count normally towards career gamerscore</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <h3 class="mb-0">
+            <p class="text-dark">Career Gamer Score</p>
+          </h3>
+          <table class="table table-hover table-bordered table-dark">
+              <thead>
+                  <tr class="text-center">
+                    <th scope="col" class='bg-danger text-uppercase '>Dave</th>
+                    <th scope="col" class="bg-info text-uppercase">Elliot</th>
+                    <th scope="col" class="bg-secondary text-uppercase">Jake</th>
+                    <th scope="col" class="bg-primary text-uppercase">Josh</th>
+                    <th scope="col" class="bg-success text-uppercase">Andy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <td>94</td>
+                    <td>80</td>
+                    <td>75</td>
+                    <td>70</td>
+                    <td>50</td>
+                  </tr>
+                </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <h3 class="mb-0">
+            <p class="text-dark">Series Won</p>
+          </h3>
+          <table class="table table-hover table-bordered table-dark">
+              <thead>
+                  <tr class="text-center">
+                    <th scope="col" class='bg-danger text-uppercase '>Dave</th>
+                    <th scope="col" class="bg-info text-uppercase">Elliot</th>
+                    <th scope="col" class="bg-secondary text-uppercase">Jake</th>
+                    <th scope="col" class="bg-primary text-uppercase">Josh</th>
+                    <th scope="col" class="bg-success text-uppercase">Andy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <td>1</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
