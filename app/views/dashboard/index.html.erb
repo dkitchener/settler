@@ -62,6 +62,8 @@
                   </tbody>
             </table>
             <br/>
+            <br/>
+            <br/>
             <table class="table table-hover table-bordered table-dark">
 
                   <tbody>
@@ -135,7 +137,7 @@
       <div class="card flex-md-row mb-4 box-shadow h-md-250 border-danger">
         <div class="card-body d-flex flex-column align-items-center">
           <h3 class="mb-0">
-            <p class="text-dark">Series Won</p>
+            <p class="text-dark">Series Won In Season</p>
           </h3>
           <table class="table table-hover table-bordered table-dark">
               <thead>
@@ -148,7 +150,7 @@
                 <tbody>
                   <tr class="text-center">
                     <% @ordered_players.each do |player| %>
-                      <td><%=Series.where(winner_id: player.id).count%></td>
+                      <td><%=Series.where(winner_id: player.id, season: @current_series.season).count%></td>
                     <% end %>
                   </tr>
                 </tbody>
