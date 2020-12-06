@@ -9,10 +9,10 @@ ActiveAdmin.register Game do
       link_to Player.find(game.winner_id).name, admin_player_path(Player.find(game.winner_id))
     end
     column "Season" do |game|
-      "Season #{game.series.season.id}"
+      "Season #{game&.series&.season&.id}"
     end
     column "Series" do |game|
-      "Series #{game.series.number}"
+      "Series #{game&.series&.number}"
     end
 
     actions

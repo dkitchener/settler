@@ -1,26 +1,26 @@
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-danger">
-    <h1 class="display-5 ">Register Game</h1>
-        <form class='p-3 p-md-5 rounded bg-white'>
-          <% @ordered_players.each do |player| %>
-            <div class="form-group row  text-uppercase ">
-              <label for="inputScore" class="col-sm-2 col-form-label" style="color: #<%=player.color_code%>; font-weight: bold;"><%= player.name %></label>
-              <div class="col-sm-1">
-                <input class="form-control" id="score1"  >
-              </div>
-            </div>
-          <% end %>
-          <div class="form-group row">
-            <div class="col-sm-2 text-dark"><strong>Series Play?</strong></div>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1" checked>
-              </div>
-            </div>
+  <h1 class="display-5 ">Register Game</h1>
+    <form class='p-3 p-md-5 rounded bg-white' action="/games" method="post" name="scores">
+      <% @ordered_players.each do |player| %>
+        <div class="form-group row  text-uppercase ">
+          <label for="inputScore" class="col-sm-2 col-form-label" style="color: #<%=player.color_code%>; font-weight: bold;"><%= player.name %></label>
+          <div class="col-sm-1">
+            <input class="form-control" name="scores[player-<%=player.id%>]">
           </div>
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-warning">Register</button>
-            </div>
+        </div>
+      <% end %>
+      <div class="form-group row">
+        <div class="col-sm-2 text-dark"><strong>Series Play?</strong></div>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck1" name="series_play" checked>
           </div>
-        </form>
+        </div>
       </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-warning">Register</button>
+        </div>
+      </div>
+    </form>
+</div>

@@ -1,11 +1,12 @@
 class Game < ApplicationRecord
-  belongs_to :series
+  belongs_to :series, optional: true
   has_many :scores
 
   before_create :calculate_victory_score
   before_create :update_winner
   after_create :update_player_series_counter, if: :series_play?
   after_create :update_series, if: :series_play?
+
 
   accepts_nested_attributes_for :scores
 
