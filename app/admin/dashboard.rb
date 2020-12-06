@@ -1,5 +1,5 @@
 ActiveAdmin.register_page "Dashboard" do
-  menu priority: 1, label: proc { "Current Series" }
+  menu false
 
   content title: proc { "Series Play! Season #{Season.find_by(current:true)&.id}" } do
 
