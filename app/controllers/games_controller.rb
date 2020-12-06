@@ -2,6 +2,11 @@ class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :accept_all_params
 
+  def index
+    @ordered_players = Player.order(:id)
+    @all_games = Game.all    
+  end
+
   def new
     @ordered_players = Player.order(:id)
   end
