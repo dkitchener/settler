@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
   def index
     @ordered_players = Player.order(:id)
-    @all_games = Game.all    
+    @all_games = Game.order(:id)
   end
 
   def new
