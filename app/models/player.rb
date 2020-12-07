@@ -6,6 +6,7 @@ class Player < ApplicationRecord
   end
 
   def ppg(series_only=nil)
+    scores = Score.where(player_id:self.id)
     total_games = scores.count
     total_scores = scores.pluck(:score).sum
     return 0.0 if total_games == 0.0
