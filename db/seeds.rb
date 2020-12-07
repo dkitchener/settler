@@ -6,80 +6,785 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-player1 = Player.find_or_create_by(name: 'Dave',  color_code: 'FF0000')
-player2 = Player.find_or_create_by(name:'Andy',   color_code: '00FF00')
-player3 = Player.find_or_create_by(name:'Elliot', color_code: '800080')
-player4 = Player.find_or_create_by(name:'Josh',   color_code: '0000FF')
-player5 = Player.find_or_create_by(name:'Jake',   color_code: '808080')
-season = Season.find_or_create_by(id: 1, current: true)
-series = Series.find_or_create_by(season: season, current: true)
+dave = Player.find_or_create_by(name: 'Dave')
+andy = Player.find_or_create_by(name:'Andy')
+elliot = Player.find_or_create_by(name:'Elliot')
+josh = Player.find_or_create_by(name:'Josh')
+jake = Player.find_or_create_by(name:'Jake')
+# season = Season.find_or_create_by(id: 1, current: true)
+# series = Series.find_or_create_by(season: season, current: true)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 5, player: josh }),
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 4, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 6, player:  andy }),
+    Score.new({ score: 12, player:  dave }),
+    Score.new({ score: 7, player:  jake }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 6, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 10, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 12, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 5, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 5, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
 
-#for testing purposes only.
-game = Game.create!(
-  series: series,
-  scores: [
-    Score.new({ score: 5, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 11, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
   ]
 )
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 5, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 11, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 9, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 3, player:  andy }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 10, player:  dave }),
+
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 10, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 10, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 5, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 8, player:  andy }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 12, player:  dave }),
+
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 7, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 11, player:  andy }),
+      Score.new({ score: 6, player:  jake }),
+      Score.new({ score: 5, player: elliot }),
+    ]
+  )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 10, player:  andy }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 11, player:  jake }),
+        Score.new({ score: 9, player: elliot }),
+        Score.new({ score: 9, player:  dave }),
+      ]
+    )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 2, player: elliot }),
+    Score.new({ score: 10, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 4, player: josh }),
+    Score.new({ score: 4, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 3, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 3, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 4, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  andy }),
+    Score.new({ score: 10, player: elliot }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 10, player: elliot }),
+    Score.new({ score: 7, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 5, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 5, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 5, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 4, player: josh }),
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 6, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 8, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 6, player:  andy }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 10, player:  andy }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 10, player:  andy }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 10, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 10, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 6, player: elliot }),
+
+  ]
+)
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 12, player:  andy }),
+      Score.new({ score: 8, player: elliot }),
+      Score.new({ score: 6, player:  dave }),
+    ]
+  )
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 5, player:  andy }),
+      Score.new({ score: 7, player: elliot }),
+      Score.new({ score: 11, player:  dave }),
+    ]
+  )
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 11, player:  andy }),
+      Score.new({ score: 6, player:  jake }),
+      Score.new({ score: 4, player: elliot }),
+      Score.new({ score: 9, player:  dave }),
+    ]
+  )
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 6, player:  andy }),
+      Score.new({ score: 7, player:  jake }),
+      Score.new({ score: 11, player:  dave }),
+    ]
+  )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 8, player:  andy }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 6, player:  andy }),
+    Score.new({ score: 5, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 6, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 10, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 10, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 11, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
   ]
 )
 
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 5, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 11, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 7, player:  andy }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 5, player: josh }),
+    Score.new({ score: 6, player:  andy }),
+    Score.new({ score: 11, player:  dave }),
   ]
 )
 
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 5, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 11, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 6, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 11, player: elliot }),
+      Score.new({ score: 8, player:  dave }),
+    ]
+  )
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 11, player:  andy }),
+      Score.new({ score: 8, player:  jake }),
+      Score.new({ score: 9, player:  dave }),
+    ]
+  )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 12, player:  dave }),
+  ]
+)
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 11, player:  jake }),
+        Score.new({ score: 6, player: elliot }),
+        Score.new({ score: 8, player:  dave }),
+      ]
+    )
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 7, player:  jake }),
+        Score.new({ score: 10, player: elliot }),
+        Score.new({ score: 11, player:  dave }),
+      ]
+    )
+
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 10, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 9, player:  dave }),
   ]
 )
 
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 5, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 11, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 7, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 4, player:  andy }),
+      Score.new({ score: 11, player:  jake }),
+      Score.new({ score: 5, player:  dave }),
+    ]
+  )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  andy }),
+    Score.new({ score: 7, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 5, player:  andy }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 8, player:  andy }),
+    Score.new({ score: 10, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+  game = Game.create!(
+    scores: [
+      Score.new({ score: 7, player:  andy }),
+      Score.new({ score: 4, player:  jake }),
+      Score.new({ score: 11, player: elliot }),
+      Score.new({ score: 9, player:  dave }),
+    ]
+  )
+
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 6, player:  jake }),
+        Score.new({ score: 5, player: elliot }),
+        Score.new({ score: 11, player:  dave }),
+      ]
+    )
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 6, player:  jake }),
+        Score.new({ score: 11, player: elliot }),
+        Score.new({ score: 8, player:  dave }),
+      ]
+    )
+
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 11, player:  jake }),
+        Score.new({ score: 9, player: elliot }),
+        Score.new({ score: 9, player:  dave }),
+      ]
+    )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 8, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 8, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
   ]
 )
 
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 11, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 5, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 5, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
   ]
 )
-
 game = Game.create!(
-  series: series,
   scores: [
-    Score.new({ score: 11, player: player1 }),
-    Score.new({ score: 9, player:  player2 }),
-    Score.new({ score: 10, player: player3 }),
-    Score.new({ score: 6, player:  player4 }),
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 6, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
   ]
 )
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 7, player:  jake }),
+    Score.new({ score: 5, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 10, player:  andy }),
+    Score.new({ score: 5, player: elliot }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 5, player: josh }),
+    Score.new({ score: 4, player:  jake }),
+    Score.new({ score: 11, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 12, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 7, player: elliot }),
+    Score.new({ score: 7, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 9, player:  andy }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 3, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 6, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 11, player: josh }),
+    Score.new({ score: 8, player:  jake }),
+    Score.new({ score: 6, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 9, player: josh }),
+    Score.new({ score: 9, player:  jake }),
+    Score.new({ score: 11, player: elliot }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 7, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 4, player: elliot }),
+    Score.new({ score: 9, player:  dave }),
+  ]
+)
+game = Game.create!(
+  scores: [
+    Score.new({ score: 8, player: josh }),
+    Score.new({ score: 11, player:  jake }),
+    Score.new({ score: 9, player: elliot }),
+    Score.new({ score: 6, player:  dave }),
+  ]
+)
+    game = Game.create!(
+      scores: [
+        Score.new({ score: 5, player: josh }),
+        Score.new({ score: 7, player:  andy }),
+        Score.new({ score: 9, player:  jake }),
+        Score.new({ score: 12, player: elliot }),
+        Score.new({ score: 8, player:  dave }),
+      ]
+    )
