@@ -14,8 +14,10 @@ class Game < ApplicationRecord
 
  private
 
- def calculate_victory_score  
-  self.victory_score = 1.0
+ def calculate_victory_score
+  game_average = scores.pluck(:score).sum.to_d/scores.count
+  high_score = scores.max { |a,b| a.score <=> b.score }
+  self.victory_score = (high_score.score - game_average)*1.5
  end
 
  def update_winner

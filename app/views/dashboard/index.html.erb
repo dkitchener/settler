@@ -24,7 +24,7 @@
                   <td><%= @ordered_scores.find_by(player: player, game_id: game.id)&.score %></td>
                 <% end %>
                 <td style="background-color:#<%=game.winner.color_code%>;"><%= game.winner.name %></td>
-                <td class='text-danger'><strong><%= game.victory_score %></strong></td>
+                <td class='text-danger'><strong><%= game.victory_score.round(1) %></strong></td>
               </tr>
             <% end %>
           </tbody>
@@ -43,7 +43,7 @@
             </tr>
             <tr class="text-center  text-uppercase">
               <td>Series High Victor Scale</td>
-              <td><%= @current_series.games.pluck(:victory_score).max %></td>
+              <td><%= @current_series.games.pluck(:victory_score).max.round(1) %></td>
             </tr>
           </tbody>
         </table>

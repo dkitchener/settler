@@ -24,7 +24,7 @@
                   <td><%= game.scores.find_by(player: player)&.score %></td>
                 <% end %>
                 <td style="background-color:#<%=game.player.color_code%>;"><%= game.player.name %></td>
-                <td class='text-danger'><strong><%= game.victory_score %></strong></td>
+                <td class='text-danger'><strong><%= game.victory_score.round(1) %></strong></td>
               </tr>
             <% end %>
           </tbody>
