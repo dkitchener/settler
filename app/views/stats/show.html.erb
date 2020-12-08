@@ -23,7 +23,7 @@
                 <td><%= player.scores.count %></td>
                 <td><%= player.games.count %></td>
                 <td><%= player.win_percentage %>%</td>
-                <td><%= player.ppg %></td>
+                <td><%= player.ppg.round(2) %></td>
               </tr>
             <% end %>
           </tbody>

@@ -9,11 +9,11 @@ class Player < ApplicationRecord
   end
 
   def ppg(series_only=nil)
-    total_games = scores.count
-    total_scores = scores.pluck(:score).sum
+    total_games = scores.count.to_d
+    total_scores = scores.pluck(:score).sum.to_d
     return 0.0 if total_games == 0.0
 
-    (total_scores/total_games).to_d.to_s
+    (total_scores/total_games).to_d
   end
 
   def win_percentage(series_only=nil)
