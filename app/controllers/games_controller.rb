@@ -3,8 +3,8 @@ class GamesController < ApplicationController
   before_action :accept_all_params
 
   def index
-    @ordered_players = Player.order(:id)
-    @all_games = Game.order(:id)
+    @ordered_players = Player.eager_load(:scores).order(:id)
+    @all_games = Game.includes(scores: :player).order(:id)
   end
 
   def new

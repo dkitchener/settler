@@ -21,14 +21,14 @@
               <tr class="text-center  text-uppercase">
                 <td><%= game.created_at.to_date %></td>
                 <% @ordered_players.each do |player| %>
-                  <td><%= Score.find_by(player: player, game_id: game.id)&.score %></td>
+                  <td><%= game.scores.find_by(player: player)&.score %></td>
                 <% end %>
-                <td style="background-color:#<%=Player.find(game.winner_id).color_code%>;"><%= Player.find(game.winner_id).name %></td>
+                <td style="background-color:#<%=game.player.color_code%>;"><%= game.player.name %></td>
                 <td class='text-danger'><strong><%= game.victory_score %></strong></td>
               </tr>
             <% end %>
           </tbody>
-        </table>        
+        </table>
       </div>
     </p>
   </div>

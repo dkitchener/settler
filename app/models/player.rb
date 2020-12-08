@@ -1,12 +1,14 @@
 class Player < ApplicationRecord
   has_many :scores
+  has_many :seasons
+  has_many :series
+  has_many :games
 
   def career_games_won
-    Game.where(winner_id: self.id).count
+    games.count
   end
 
   def ppg(series_only=nil)
-    scores = Score.where(player_id:self.id)
     total_games = scores.count
     total_scores = scores.pluck(:score).sum
     return 0.0 if total_games == 0.0
@@ -16,7 +18,7 @@ class Player < ApplicationRecord
 
   def win_percentage(series_only=nil)
     total_games = scores.count.to_d
-    total_games_won = Game.where(winner_id: self.id).count.to_d
+    total_games_won = games.count.to_d
 
     return 0.0 if total_games == 0.0
 

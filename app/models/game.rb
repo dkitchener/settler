@@ -1,6 +1,8 @@
 class Game < ApplicationRecord
   belongs_to :series, optional: true
   has_many :scores
+  belongs_to :player, optional: true
+  alias :winner :player
 
   before_create :calculate_victory_score
   before_create :update_winner
@@ -12,26 +14,26 @@ class Game < ApplicationRecord
 
  private
 
- def calculate_victory_score
+ def calculate_victory_score  
   self.victory_score = 1.0
  end
 
  def update_winner
    high_score = scores.max { |a,b| a.score <=> b.score }
-   self.winner_id = high_score.player_id
+   self.player = high_score.player
  end
 
  def update_player_series_counter(points=10)
-   counter = PlayerSeriesSeasonCounter.find_or_create_by(player_id: winner_id, series: series, season: series.season)
+   counter = PlayerSeriesSeasonCounter.find_or_create_by(player: player, series: series, season: series.season)
    counter.point_total += points
    counter.save
  end
 
   def update_series
-    win_total = Game.where(series: series, winner_id: winner_id).count
+    win_total = Game.where(series: series, player: player).count
     if win_total == series.num_games
      update_player_series_counter(20)
-     series.end!(winner_id)
+     series.end!(player)
     end
   end
 

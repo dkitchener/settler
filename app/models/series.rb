@@ -1,9 +1,11 @@
 class Series < ApplicationRecord
   has_many :games
   belongs_to :season
+  belongs_to :player, optional: true
+  alias :winner :player
 
-  def end!(winner_id)
-    self.winner_id = winner_id
+  def end!(player)
+    self.player = player
     self.current = false
     self.save
 
@@ -16,7 +18,7 @@ class Series < ApplicationRecord
   end
 
   def start_new_season
-    season.update!(current: false, winner_id: self.winner_id)
+    season.update!(current: false, player: self.player)
     Season.create!(current: true, id: season.id + 1)
     create_new_series(number=1)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_195414) do
+ActiveRecord::Schema.define(version: 2020_12_08_005728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2020_12_05_195414) do
 
   create_table "games", force: :cascade do |t|
     t.decimal "victory_score", precision: 15, scale: 13
-    t.bigint "winner_id"
+    t.bigint "player_id"
     t.bigint "series_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_games_on_player_id"
     t.index ["series_id"], name: "index_games_on_series_id"
-    t.index ["winner_id"], name: "index_games_on_winner_id"
   end
 
   create_table "player_series_season_counters", force: :cascade do |t|
@@ -69,16 +69,16 @@ ActiveRecord::Schema.define(version: 2020_12_05_195414) do
   end
 
   create_table "seasons", force: :cascade do |t|
-    t.bigint "winner_id"
+    t.bigint "player_id"
     t.boolean "current", default: false, null: false
     t.integer "max_total_points", default: 200
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["winner_id"], name: "index_seasons_on_winner_id"
+    t.index ["player_id"], name: "index_seasons_on_player_id"
   end
 
   create_table "series", force: :cascade do |t|
-    t.bigint "winner_id"
+    t.bigint "player_id"
     t.integer "num_games", default: 5
     t.integer "max_total_games", default: 20
     t.boolean "current", default: false, null: false
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(version: 2020_12_05_195414) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "season_id", null: false
     t.integer "number", default: 1
+    t.index ["player_id"], name: "index_series_on_player_id"
     t.index ["season_id"], name: "index_series_on_season_id"
-    t.index ["winner_id"], name: "index_series_on_winner_id"
   end
 
-  add_foreign_key "games", "players", column: "winner_id"
-  add_foreign_key "seasons", "players", column: "winner_id"
-  add_foreign_key "series", "players", column: "winner_id"
+  add_foreign_key "games", "players"
+  add_foreign_key "seasons", "players"
+  add_foreign_key "series", "players"
   add_foreign_key "series", "seasons"
 end

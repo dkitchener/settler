@@ -21,7 +21,7 @@
               <tr class="text-center text-uppercase">
                 <td style="background-color:#<%=player.color_code%>;"><%=player.name%></td>
                 <td><%= player.scores.count %></td>
-                <td><%= Game.where(winner_id: player.id).count %></td>
+                <td><%= player.games.count %></td>
                 <td><%= player.win_percentage %>%</td>
                 <td><%= player.ppg %></td>
               </tr>
