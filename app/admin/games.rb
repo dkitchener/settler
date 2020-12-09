@@ -6,7 +6,7 @@ ActiveAdmin.register Game do
       game.created_at
     end
     column "Winner" do |game|
-      link_to Player.find(game.winner_id).name, admin_player_path(Player.find(game.winner_id))
+      link_to game.winner.name, admin_player_path(game.winner)
     end
     column "Season" do |game|
       "Season #{game&.series&.season&.id}"

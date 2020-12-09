@@ -6,11 +6,11 @@ ActiveAdmin.register Player do
     column :color_code
 
     column "Series Won" do |player|
-      Series.where(winner_id: player.id).count
+      Series.where(player: player).count
     end
 
     column "Seasons Won" do |player|
-      Season.where(winner_id: player.id).count
+      Season.where(player: player).count
     end
 
     column :ppg

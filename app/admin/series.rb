@@ -3,8 +3,8 @@ ActiveAdmin.register Series do
 
   index pagination_total: false do
     column "Winner" do |series|
-      if series.winner_id
-        link_to Player.find(series.winner_id).name, admin_player_path(Player.find(series.winner_id))
+      if series.winner
+        link_to series.winner.name, admin_player_path(series.winner)
       else
         "Series In Progress"
       end

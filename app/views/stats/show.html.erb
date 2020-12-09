@@ -20,7 +20,7 @@
             <% @ordered_players.each do |player| %>
               <tr class="text-center text-uppercase">
                 <td style="background-color:#<%=player.color_code%>;"><%=player.name%></td>
-                <td><%= player.scores.count %></td>
+                <td style="background-color:##FF0000"><strong><%= player.scores.count %></strong></td>
                 <td><%= player.games.count %></td>
                 <td><%= player.win_percentage %>%</td>
                 <td><%= player.ppg.round(2) %></td>

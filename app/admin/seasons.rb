@@ -7,8 +7,8 @@ ActiveAdmin.register Season do
     end
 
     column "Winner" do |season|
-      if season.winner_id
-        link_to Player.find(season.winner_id).name, admin_player_path(Player.find(season.winner_id))
+      if season.winner
+        link_to season.winner.name, admin_player_path(season.winner)
       else
         "Series In Progress"
       end
